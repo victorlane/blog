@@ -1,0 +1,19 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={["flex flex-row flex-wrap gap-1", className]}>
+  <slot />
+</div>
+
+<style>
+  div :global(> *:not(:last-child))::after {
+    content: "•";
+    margin-left: 0.25rem;
+    color: gray; 
+  }
+</style>
