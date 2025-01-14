@@ -1,0 +1,98 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import MiniHighlight from "../components/MiniHighlight.astro";
+import Competencies from "../components/Competencies.astro";
+
+import linkedInIcon from "../assets/linkedin.png";
+import githubIcon from "../assets/github.svg";
+import globeIcon from "../assets/globe.png";
+---
+
+<Layout>
+  <div class="flex flex-row">
+    <div class="flex flex-col 2xl:space-y-9">
+      <div class="flex flex-col 2xl:space-y-3">
+        <h1
+          class="text-5xl font-semibold inline-block bg-gradient-to-br from-blue-600 to-blue-300 bg-clip-text text-transparent"
+        >
+          Victor Brinkhorst
+        </h1>
+        <div class="flex flex-row 2xl:space-x-4">
+          <a class="group" target="_blank" href="mailto:victorbrnk@gmail.com">
+            <Image
+              class="w-6 h-6 grayscale group-hover:-skew-y-6 transition-transform duration-200"
+              src={globeIcon}
+              alt="LinkedIn logo in greyscale"
+            />
+          </a>
+          <a
+            class="group"
+            target="_blank"
+            href="https://www.linkedin.com/in/victor-brinkhorst-3720671b7/"
+          >
+            <Image
+              class="w-6 h-6 grayscale group-hover:-skew-y-6 transition-transform duration-200"
+              src={linkedInIcon}
+              alt="LinkedIn logo in greyscale"
+            />
+          </a>
+          <a class="group" target="_blank" href="https://github.com/victorlane">
+            <Image
+              class="w-6 h-6 group-hover:-skew-y-6 transition-transform duration-200"
+              src={githubIcon}
+              alt="Github logo in greyscale"
+            />
+          </a>
+          <div class="">
+            <p class="text-gray-400">
+              <span class="mr-2">·</span> Software Developer
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-row">
+        <div class="flex 2xl:max-w-1/2">
+          <p class="text-gray-400 2xl:max-w-prose">
+            I'm a software developer based in The Netherlands. I love to write
+            code in <MiniHighlight>Python</MiniHighlight>, <MiniHighlight
+              >JavaScript</MiniHighlight
+            > & <MiniHighlight>Go</MiniHighlight>. Here I'll blog about anything
+            that catches my interest.
+          </p>
+        </div>
+        <div class="flex flex-col 2xl:max-w-1/2">
+          <h2 class="text-blue-500 text-xl font-bold">Stuff I use</h2>
+          <div class="flex flex-col space-y-0.5">
+            <Competencies class="text-gray-300">
+              <span class="">Python</span>
+              <span class="">JavaScript</span>
+              <span class="">Go</span>
+              <span class="">PHP</span>
+            </Competencies>
+            <Competencies class="text-gray-300">
+              <span class="">Kubernetes</span>
+              <span class="">Docker</span>
+              <span class="">Ubuntu</span>
+              <span class="">Google Cloud Platform</span>
+            </Competencies>
+            <Competencies class="text-gray-300">
+              <span class="">PostgreSQL</span>
+              <span class="">MariaDB</span>
+              <span class="">MongoDB</span>
+              <span class="">Redis</span>
+            </Competencies>
+            <Competencies class="text-gray-300">
+              <span class="">Django</span>
+              <span class="">Selenium</span>
+              <span class="">TailwindCSS</span>
+              <span class="">Astro</span>
+              <span class="">FastAPI</span>
+            </Competencies>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
