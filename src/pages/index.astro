@@ -10,15 +10,19 @@ import globeIcon from "../assets/globe.png";
 ---
 
 <Layout>
-  <div class="flex flex-row">
-    <div class="flex flex-col 2xl:space-y-9">
-      <div class="flex flex-col 2xl:space-y-3">
+  <div class="flex flex-row max-w-full">
+    <div
+      class="flex flex-col space-y-3 md:space-y-4 xl:space-y-6 2xl:space-y-9"
+    >
+      <div class="flex flex-col flex-wrap space-y-1.5 md:space-y-2 xl:space-y-3">
         <h1
           class="text-5xl font-semibold inline-block bg-gradient-to-br from-blue-600 to-blue-300 bg-clip-text text-transparent"
         >
           Victor Brinkhorst
         </h1>
-        <div class="flex flex-row 2xl:space-x-4">
+        <div
+          class="flex flex-row space-x-1 md:space-x-2 xl:space-x-3 2xl:space-x-4"
+        >
           <a class="group" target="_blank" href="mailto:victorbrnk@gmail.com">
             <Image
               class="w-6 h-6 grayscale group-hover:-skew-y-6 transition-transform duration-200"
@@ -46,23 +50,32 @@ import globeIcon from "../assets/globe.png";
           </a>
           <div class="">
             <p class="text-gray-400">
-              <span class="mr-2">·</span> Software Developer
+              <span class="mr-2">·</span> Software Engineer, Kubestronaut
             </p>
           </div>
         </div>
       </div>
 
-      <div class="flex flex-row">
-        <div class="flex 2xl:max-w-1/2">
-          <p class="text-gray-400 2xl:max-w-prose">
+      <div
+        class="flex flex-col space-y-3 sm:space-y-6 lg:space-y-0 lg:flex-row"
+      >
+        <div class="flex flex-col space-y-2 w-full lg:max-w-1/2 mr-8">
+          <p class="text-gray-400 max-w-xl">
             I'm a software developer based in The Netherlands. I love to write
             code in <MiniHighlight>Python</MiniHighlight>, <MiniHighlight
               >JavaScript</MiniHighlight
             > & <MiniHighlight>Go</MiniHighlight>. Here I'll blog about anything
             that catches my interest.
           </p>
+          <p class="text-gray-400 max-w-xl">
+            I thrive in both cloud and on-prem environments. Seamlessly bridging
+            development, system administration and DevOps. As a kubestronaut, I
+            enjoy orchestrating applications with Kubernetes, ensuring scalable
+            and efficient deployments.
+          </p>
         </div>
-        <div class="flex flex-col 2xl:max-w-1/2">
+
+        <div class="flex flex-col w-full lg:max-w-1/2">
           <h2 class="text-blue-500 text-xl font-bold">Stuff I use</h2>
           <div class="flex flex-col space-y-0.5">
             <Competencies class="text-gray-300">
@@ -74,8 +87,10 @@ import globeIcon from "../assets/globe.png";
             <Competencies class="text-gray-300">
               <span class="">Kubernetes</span>
               <span class="">Docker</span>
+              <span class="">RHEL</span>
               <span class="">Ubuntu</span>
-              <span class="">Google Cloud Platform</span>
+              <span class="">AWS</span>
+              <span class="">GCP</span>
             </Competencies>
             <Competencies class="text-gray-300">
               <span class="">PostgreSQL</span>
