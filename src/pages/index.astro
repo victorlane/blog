@@ -28,256 +28,248 @@ const posts = Object.values(
 ---
 
 <Layout>
-  <div class="flex flex-row max-w-full overflow-hidden">
-    <div
-      class="flex flex-col space-y-3 md:space-y-4 xl:space-y-6 2xl:space-y-9 w-full"
-    >
-      <div
-        class="flex flex-col flex-wrap space-y-1.5 md:space-y-2 xl:space-y-3"
-      >
-        <h1
-          class="text-5xl font-semibold inline-block bg-gradient-to-br from-blue-600 to-blue-300 bg-clip-text text-transparent"
-        >
-          Victor Brinkhorst
-        </h1>
-        <div
-          class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-1 md:space-x-2 xl:space-x-3 2xl:space-x-4 sm:items-center"
-        >
-          <div
-            class="flex flex-row space-x-2 sm:space-x-1 md:space-x-2 xl:space-x-3 2xl:space-x-4"
+  <div class="flex flex-col max-w-full">
+    <div class="flex flex-col space-y-8 mb-20">
+      <div class="flex flex-col space-y-4">
+        <h1 class="text-6xl md:text-7xl font-bold tracking-tight">
+          <span
+            class="bg-gradient-to-br from-white via-white to-zinc-500 bg-clip-text text-transparent"
           >
-            <a class="group" target="_blank" href="mailto:victorbrnk@gmail.com">
+            Victor Brinkhorst
+          </span>
+        </h1>
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+          <div class="flex items-center gap-4">
+            <a
+              class="group p-2 rounded-lg border border-zinc-800 hover:border-zinc-700 bg-zinc-950/50 hover:bg-zinc-900/50 transition-all duration-200"
+              target="_blank"
+              href="mailto:victorbrnk@gmail.com"
+              aria-label="Email"
+            >
               <Image
-                class="w-6 h-6 grayscale group-hover:-skew-y-6 transition-transform duration-200"
+                class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-200"
                 src={globeIcon}
-                alt="Globe icon in grayscale"
+                alt="Email"
                 data-m:click="lookup=email"
               />
             </a>
             <a
-              class="group"
+              class="group p-2 rounded-lg border border-zinc-800 hover:border-zinc-700 bg-zinc-950/50 hover:bg-zinc-900/50 transition-all duration-200"
               target="_blank"
               href="https://www.linkedin.com/in/victor-brinkhorst-3720671b7/"
+              aria-label="LinkedIn"
             >
               <Image
-                class="w-6 h-6 grayscale group-hover:-skew-y-6 transition-transform duration-200"
+                class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-200"
                 src={linkedInIcon}
-                alt="LinkedIn logo in greyscale"
+                alt="LinkedIn"
               />
             </a>
             <a
-              class="group"
+              class="group p-2 rounded-lg border border-zinc-800 hover:border-zinc-700 bg-zinc-950/50 hover:bg-zinc-900/50 transition-all duration-200"
               target="_blank"
               href="https://github.com/victorlane"
+              aria-label="GitHub"
             >
               <Image
-                class="w-6 h-6 grayscale group-hover:-skew-y-6 transition-transform duration-200"
+                class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-200"
                 src={githubIcon}
-                alt="Github logo in greyscale"
+                alt="GitHub"
                 data-m:click="lookup=github"
               />
             </a>
           </div>
-          <div class="flex-shrink-0">
-            <p class="text-gray-400 text-sm sm:text-base">
-              <span class="mr-2 hidden sm:inline">·</span> Software Engineer, Kubestronaut
-            </p>
+
+          <div class="flex items-center">
+            <div
+              class="px-3 py-1.5 bg-zinc-900/80 border border-zinc-800 rounded-full"
+            >
+              <p class="text-zinc-400 text-sm font-medium">
+                Software Engineer, Kubestronaut
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div
-        class="flex flex-col space-y-3 sm:space-y-6 lg:space-y-0 lg:flex-row"
-      >
-        <div class="flex flex-col space-y-2 w-full lg:max-w-1/2 mr-8">
-          <p class="text-gray-400 max-w-xl">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div class="flex flex-col space-y-4">
+          <p class="text-lg text-zinc-300 leading-relaxed max-w-lg">
             I'm a software developer based in The Netherlands. I love to write
             code in <MiniHighlight>Python</MiniHighlight>, <MiniHighlight
-              >JavaScript</MiniHighlight
+              >TypeScript</MiniHighlight
             > & <MiniHighlight>Go</MiniHighlight>. Here I post about anything
             that catches my interest.
           </p>
         </div>
 
-        <div class="flex flex-col w-full lg:max-w-1/2">
-          <h2 class="text-blue-500 text-xl font-bold">Stuff I use</h2>
-          <div class="flex flex-col space-y-0.5">
-            <Competencies class="text-gray-300">
-              <span class="">Python</span>
-              <span class="">TypeScript</span>
-              <span class="">Go</span>
-            </Competencies>
-            <Competencies class="text-gray-300">
-              <span class="">Kubernetes</span>
-              <span class="">Docker</span>
-              <span class="">RHEL</span>
-              <span class="">Ubuntu</span>
-              <span class="">AWS</span>
-              <span class="">GCP</span>
-            </Competencies>
-            <Competencies class="text-gray-300">
-              <span class="">PostgreSQL</span>
-              <span class="">MariaDB</span>
-              <span class="">MongoDB</span>
-              <span class="">Redis</span>
-            </Competencies>
-            <Competencies class="text-gray-300">
-              <span class="">Django</span>
-              <span class="">Selenium</span>
-              <span class="">TailwindCSS</span>
-              <span class="">Astro</span>
-              <span class="">FastAPI</span>
-            </Competencies>
+        <div class="flex flex-col space-y-6">
+          <h2 class="text-lg font-semibold text-zinc-200">Tech Stack</h2>
+          <div class="grid grid-cols-1 gap-4">
+            <div class="space-y-3">
+              <h3
+                class="text-sm font-medium text-zinc-400 uppercase tracking-wide"
+              >
+                Languages
+              </h3>
+              <Competencies class="text-zinc-300">
+                <span class="">Python</span>
+                <span class="">TypeScript</span>
+                <span class="">Go</span>
+              </Competencies>
+            </div>
+
+            <div class="space-y-3">
+              <h3
+                class="text-sm font-medium text-zinc-400 uppercase tracking-wide"
+              >
+                Infrastructure
+              </h3>
+              <Competencies class="text-zinc-300">
+                <span class="">Kubernetes</span>
+                <span class="">Docker</span>
+                <span class="">RHEL</span>
+                <span class="">Ubuntu</span>
+                <span class="">AWS</span>
+                <span class="">GCP</span>
+              </Competencies>
+            </div>
+
+            <div class="space-y-3">
+              <h3
+                class="text-sm font-medium text-zinc-400 uppercase tracking-wide"
+              >
+                Databases
+              </h3>
+              <Competencies class="text-zinc-300">
+                <span class="">PostgreSQL</span>
+                <span class="">MariaDB</span>
+                <span class="">MongoDB</span>
+                <span class="">Redis</span>
+              </Competencies>
+            </div>
+
+            <div class="space-y-3">
+              <h3
+                class="text-sm font-medium text-zinc-400 uppercase tracking-wide"
+              >
+                Frameworks
+              </h3>
+              <Competencies class="text-zinc-300">
+                <span class="">Django</span>
+                <span class="">Selenium</span>
+                <span class="">TailwindCSS</span>
+                <span class="">Astro</span>
+                <span class="">FastAPI</span>
+              </Competencies>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  {posts.length > 0 && (
-  <div class="mt-16">
-    <h2
-      class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent mb-6"
-    >
-      Blog posts
-    </h2>
+  {
+    posts.length > 0 && (
+      <div class="border-t border-zinc-800/50 pt-16">
+        <div class="flex items-center gap-3 mb-8">
+          <h2 class="text-2xl font-semibold text-zinc-100">Latest Posts</h2>
+          <div class="h-px bg-gradient-to-r from-zinc-800 to-transparent flex-1" />
+        </div>
 
-    <!-- Mobile: Vertical Stack with Max 3 Posts -->
-    <div class="block md:hidden">
-      <div class="space-y-6">
-        {
-          posts.slice(0, 3).map((post) => (
-            <div class="w-full">
+        <div class="block md:hidden">
+          <div class="space-y-4">
+            {posts.slice(0, 3).map((post) => (
+              <div class="w-full">
+                <BlogCard
+                  title={post.frontmatter.title}
+                  short={post.frontmatter.short || "No summary available"}
+                  preview_image={post.frontmatter.image || "/placeholder.jpg"}
+                  url={post.url}
+                />
+              </div>
+            ))}
+          </div>
+          {posts.length > 3 && (
+            <div class="flex justify-center mt-8">
+              <button
+                id="showMoreBtn"
+                class="group inline-flex items-center gap-2 px-4 py-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-zinc-100 rounded-lg transition-all duration-200 text-sm font-medium"
+              >
+                <span>View All Posts</span>
+                <svg
+                  class="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div class="hidden md:block">
+          <div class="grid grid-cols-2 xl:grid-cols-3 gap-6">
+            {posts.slice(0, 6).map((post) => (
               <BlogCard
                 title={post.frontmatter.title}
                 short={post.frontmatter.short || "No summary available"}
                 preview_image={post.frontmatter.image || "/placeholder.jpg"}
                 url={post.url}
               />
-            </div>
-          ))
-        }
-      </div>
-      {
-        posts.length > 3 && (
-          <div class="flex justify-center mt-8">
-            <button
-              id="showMoreBtn"
-              class="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-            >
-              <span class="font-medium">Show More Posts</span>
-              <svg
-                class="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
+            ))}
           </div>
-        )
-      }
-    </div>
 
-    <!-- Desktop: Horizontal Scroll -->
-    <div class="hidden md:block relative">
-      <div
-        id="blogContainer"
-        class="flex overflow-x-auto space-x-6 pb-6 pr-16 custom-scrollbar scroll-smooth"
-      >
-        {
-          posts.map((post) => (
-            <BlogCard
-              title={post.frontmatter.title}
-              short={post.frontmatter.short || "No summary available"}
-              preview_image={post.frontmatter.image || "/placeholder.jpg"}
-              url={post.url}
-            />
-          ))
-        }
+          {posts.length > 6 && (
+            <div class="flex justify-center mt-8">
+              <button
+                id="showMoreDesktop"
+                class="group inline-flex items-center gap-2 px-4 py-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-zinc-100 rounded-lg transition-all duration-200 text-sm font-medium"
+              >
+                <span>View All Posts</span>
+                <svg
+                  class="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
-
-      <!-- Navigation Arrows -->
-      <button
-        id="scrollLeft"
-        class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-gray-800/80 hover:bg-gray-700/80 backdrop-blur-sm border border-gray-600/50 hover:border-blue-500/50 rounded-full flex items-center justify-center text-gray-300 hover:text-blue-400 transition-all duration-300 shadow-lg z-10"
-      >
-        <svg
-          class="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15 19l-7-7 7-7"></path>
-        </svg>
-      </button>
-
-      <button
-        id="scrollRight"
-        class="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-gray-800/80 hover:bg-gray-700/80 backdrop-blur-sm border border-gray-600/50 hover:border-blue-500/50 rounded-full flex items-center justify-center text-gray-300 hover:text-blue-400 transition-all duration-300 shadow-lg z-10"
-      >
-        <svg
-          class="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 5l7 7-7 7"></path>
-        </svg>
-      </button>
-    </div>
-  </div>
-  )}
+    )
+  }
 
   <script>
-    // Mobile show more functionality
+    // Button click handlers
     const showMoreBtn = document.getElementById("showMoreBtn");
+    const showMoreDesktop = document.getElementById("showMoreDesktop");
+
     if (showMoreBtn) {
       showMoreBtn.addEventListener("click", () => {
-        // You can implement navigation to a full blog listing page here
         window.location.href = "/blog";
       });
     }
 
-    // Desktop scroll functionality
-    const blogContainer = document.getElementById("blogContainer");
-    const scrollLeftBtn = document.getElementById("scrollLeft");
-    const scrollRightBtn = document.getElementById("scrollRight");
-
-    if (blogContainer && scrollLeftBtn && scrollRightBtn) {
-      const cardWidth = 384; // max-w-sm (24rem = 384px) + gap
-
-      scrollLeftBtn.addEventListener("click", () => {
-        blogContainer.scrollBy({ left: -cardWidth, behavior: "smooth" });
+    if (showMoreDesktop) {
+      showMoreDesktop.addEventListener("click", () => {
+        window.location.href = "/blog";
       });
-
-      scrollRightBtn.addEventListener("click", () => {
-        blogContainer.scrollBy({ left: cardWidth, behavior: "smooth" });
-      });
-
-      // Update arrow visibility based on scroll position
-      const updateArrows = () => {
-        const { scrollLeft, scrollWidth, clientWidth } = blogContainer;
-        scrollLeftBtn.style.opacity = scrollLeft > 0 ? "1" : "0.5";
-        scrollRightBtn.style.opacity =
-          scrollLeft < scrollWidth - clientWidth - 10 ? "1" : "0.5";
-      };
-
-      blogContainer.addEventListener("scroll", updateArrows);
-      updateArrows(); // Initial state
     }
   </script>
 </Layout>

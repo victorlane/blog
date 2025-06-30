@@ -19,21 +19,21 @@
       /* Custom visible scrollbar */
       .custom-scrollbar {
         scrollbar-width: thin;
-        scrollbar-color: rgba(59, 130, 246, 0.5) rgba(31, 41, 55, 0.5);
+        scrollbar-color: rgba(113, 113, 122, 0.3) rgba(39, 39, 42, 0.3);
       }
       .custom-scrollbar::-webkit-scrollbar {
-        height: 6px;
+        height: 4px;
       }
       .custom-scrollbar::-webkit-scrollbar-track {
-        background: rgba(31, 41, 55, 0.5);
-        border-radius: 3px;
+        background: rgba(39, 39, 42, 0.3);
+        border-radius: 2px;
       }
       .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: rgba(59, 130, 246, 0.5);
-        border-radius: 3px;
+        background: rgba(113, 113, 122, 0.5);
+        border-radius: 2px;
       }
       .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: rgba(59, 130, 246, 0.7);
+        background: rgba(113, 113, 122, 0.7);
       }
 
       /* Line clamp utility */
@@ -43,11 +43,45 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
+
+      /* Subtle gradient text animations */
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+
+      .animate-shimmer {
+        background: linear-gradient(
+          90deg,
+          #fafafa 0%,
+          #e4e4e7 50%,
+          #fafafa 100%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 2s ease-in-out infinite;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
     </style>
   </head>
-  <body class="bg-[#09090b] min-h-screen w-full m-0 p-0">
+  <body class="bg-[#0a0a0a] min-h-screen w-full m-0 p-0 antialiased relative">
+    <!-- Subtle background pattern -->
     <div
-      class="px-[2rem] pt-[1rem] sm:px-32 sm:pt-[2rem] md:px-40 md:pt-[4rem] xl:pt-[6rem] xl:px-52 2xl:pt-[9rem] 2xl:px-72"
+      class="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,120,128,0.03),transparent_50%)] pointer-events-none"
+    >
+    </div>
+    <div
+      class="fixed inset-0 bg-[linear-gradient(to_right,rgba(120,120,128,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(120,120,128,0.03)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none"
+    >
+    </div>
+
+    <div
+      class="relative z-10 px-6 pt-8 sm:px-8 sm:pt-12 md:px-12 md:pt-16 lg:px-20 lg:pt-20 xl:px-32 xl:pt-24 2xl:px-40 2xl:pt-32 max-w-7xl mx-auto"
     >
       <slot />
     </div>

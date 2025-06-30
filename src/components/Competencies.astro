@@ -6,14 +6,12 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<div class:list={["flex flex-row flex-wrap gap-1", className]}>
+<div class:list={["flex flex-wrap gap-2", className]}>
   <slot />
 </div>
 
 <style>
-  div :global(> *:not(:last-child))::after {
-    content: "•";
-    margin-left: 0.25rem;
-    color: gray; 
+  div :global(> *) {
+    @apply inline-flex items-center px-2.5 py-1 text-xs font-medium bg-zinc-900/50 text-zinc-300 border border-zinc-800/50 rounded-md hover:bg-zinc-800/50 hover:border-zinc-700/50 transition-all duration-200;
   }
 </style>
