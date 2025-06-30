@@ -1,0 +1,9 @@
+# Cloudflare Pages build configuration
+# This file helps ensure the correct Node.js version is used
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18.20.8"
