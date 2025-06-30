@@ -1,0 +1,40 @@
+---
+interface Props {
+  title: string;
+  short: string;
+  preview_image: string;
+  url?: string;
+}
+
+let { title, short, preview_image, url } = Astro.props;
+
+title = title.length > 35 ? title.slice(0, 35) + "…" : title;
+let description = short.length > 120 ? short.slice(0, 120) + "…" : short;
+---
+
+<a
+  href={url}
+  class="block group w-full md:max-w-sm md:flex-shrink-0 bg-gradient-to-br from-gray-900/80 to-gray-800/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-blue-500/50 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 cursor-pointer"
+>
+  <div class="relative overflow-hidden">
+    <img
+      src={preview_image}
+      alt={title}
+      class="w-full h-48 object-cover transition-transform duration-300"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent"
+    >
+    </div>
+  </div>
+  <div class="p-6 space-y-3">
+    <h3
+      class="text-lg font-bold text-white leading-tight group-hover:text-blue-300 transition-colors duration-300"
+    >
+      {title}
+    </h3>
+    <p class="text-gray-300 text-sm leading-relaxed line-clamp-3">
+      {description}
+    </p>
+  </div>
+</a>

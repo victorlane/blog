@@ -3,56 +3,84 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import MiniHighlight from "../components/MiniHighlight.astro";
 import Competencies from "../components/Competencies.astro";
+import BlogCard from "../components/BlogCard.astro";
 
 import linkedInIcon from "../assets/linkedin.png";
 import githubIcon from "../assets/github.svg";
 import globeIcon from "../assets/globe.png";
+
+interface BlogPostFrontmatter {
+  title: string;
+  short: string;
+  image?: string;
+}
+
+interface BlogPost {
+  frontmatter: BlogPostFrontmatter;
+  content: string;
+  file: string;
+  url: string;
+}
+
+const posts = Object.values(
+  import.meta.glob<BlogPost>("../posts/*.md", { eager: true })
+);
 ---
 
 <Layout>
-  <div class="flex flex-row max-w-full">
+  <div class="flex flex-row max-w-full overflow-hidden">
     <div
-      class="flex flex-col space-y-3 md:space-y-4 xl:space-y-6 2xl:space-y-9"
+      class="flex flex-col space-y-3 md:space-y-4 xl:space-y-6 2xl:space-y-9 w-full"
     >
-      <div class="flex flex-col flex-wrap space-y-1.5 md:space-y-2 xl:space-y-3">
+      <div
+        class="flex flex-col flex-wrap space-y-1.5 md:space-y-2 xl:space-y-3"
+      >
         <h1
           class="text-5xl font-semibold inline-block bg-gradient-to-br from-blue-600 to-blue-300 bg-clip-text text-transparent"
         >
           Victor Brinkhorst
         </h1>
         <div
-          class="flex flex-row space-x-1 md:space-x-2 xl:space-x-3 2xl:space-x-4"
+          class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-1 md:space-x-2 xl:space-x-3 2xl:space-x-4 sm:items-center"
         >
-          <a class="group" target="_blank" href="mailto:victorbrnk@gmail.com">
-            <Image
-              class="w-6 h-6 grayscale group-hover:-skew-y-6 transition-transform duration-200"
-              src={globeIcon}
-              alt="Globe icon in grayscale"
-              data-m:click="lookup=email"
-            />
-          </a>
-          <a
-            class="group"
-            target="_blank"
-            href="https://www.linkedin.com/in/victor-brinkhorst-3720671b7/"
+          <div
+            class="flex flex-row space-x-2 sm:space-x-1 md:space-x-2 xl:space-x-3 2xl:space-x-4"
           >
-            <Image
-              class="w-6 h-6 grayscale group-hover:-skew-y-6 transition-transform duration-200"
-              src={linkedInIcon}
-              alt="LinkedIn logo in greyscale"
-            />
-          </a>
-          <a class="group" target="_blank" href="https://github.com/victorlane">
-            <Image
-              class="w-6 h-6 group-hover:-skew-y-6 transition-transform duration-200"
-              src={githubIcon}
-              alt="Github logo in greyscale"
-              data-m:click="lookup=github"
-            />
-          </a>
-          <div class="">
-            <p class="text-gray-400">
-              <span class="mr-2">·</span> Software Engineer, Kubestronaut
+            <a class="group" target="_blank" href="mailto:victorbrnk@gmail.com">
+              <Image
+                class="w-6 h-6 grayscale group-hover:-skew-y-6 transition-transform duration-200"
+                src={globeIcon}
+                alt="Globe icon in grayscale"
+                data-m:click="lookup=email"
+              />
+            </a>
+            <a
+              class="group"
+              target="_blank"
+              href="https://www.linkedin.com/in/victor-brinkhorst-3720671b7/"
+            >
+              <Image
+                class="w-6 h-6 grayscale group-hover:-skew-y-6 transition-transform duration-200"
+                src={linkedInIcon}
+                alt="LinkedIn logo in greyscale"
+              />
+            </a>
+            <a
+              class="group"
+              target="_blank"
+              href="https://github.com/victorlane"
+            >
+              <Image
+                class="w-6 h-6 grayscale group-hover:-skew-y-6 transition-transform duration-200"
+                src={githubIcon}
+                alt="Github logo in greyscale"
+                data-m:click="lookup=github"
+              />
+            </a>
+          </div>
+          <div class="flex-shrink-0">
+            <p class="text-gray-400 text-sm sm:text-base">
+              <span class="mr-2 hidden sm:inline">·</span> Software Engineer, Kubestronaut
             </p>
           </div>
         </div>
@@ -66,14 +94,8 @@ import globeIcon from "../assets/globe.png";
             I'm a software developer based in The Netherlands. I love to write
             code in <MiniHighlight>Python</MiniHighlight>, <MiniHighlight
               >JavaScript</MiniHighlight
-            > & <MiniHighlight>Go</MiniHighlight>. Here I'll blog about anything
+            > & <MiniHighlight>Go</MiniHighlight>. Here I post about anything
             that catches my interest.
-          </p>
-          <p class="text-gray-400 max-w-xl">
-            I thrive in both cloud and on-prem environments. Seamlessly bridging
-            development, system administration and DevOps. As a kubestronaut, I
-            enjoy orchestrating applications with Kubernetes, ensuring scalable
-            and efficient deployments.
           </p>
         </div>
 
@@ -82,9 +104,8 @@ import globeIcon from "../assets/globe.png";
           <div class="flex flex-col space-y-0.5">
             <Competencies class="text-gray-300">
               <span class="">Python</span>
-              <span class="">JavaScript</span>
+              <span class="">TypeScript</span>
               <span class="">Go</span>
-              <span class="">PHP</span>
             </Competencies>
             <Competencies class="text-gray-300">
               <span class="">Kubernetes</span>
@@ -112,4 +133,151 @@ import globeIcon from "../assets/globe.png";
       </div>
     </div>
   </div>
+  {posts.length > 0 && (
+  <div class="mt-16">
+    <h2
+      class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent mb-6"
+    >
+      Blog posts
+    </h2>
+
+    <!-- Mobile: Vertical Stack with Max 3 Posts -->
+    <div class="block md:hidden">
+      <div class="space-y-6">
+        {
+          posts.slice(0, 3).map((post) => (
+            <div class="w-full">
+              <BlogCard
+                title={post.frontmatter.title}
+                short={post.frontmatter.short || "No summary available"}
+                preview_image={post.frontmatter.image || "/placeholder.jpg"}
+                url={post.url}
+              />
+            </div>
+          ))
+        }
+      </div>
+      {
+        posts.length > 3 && (
+          <div class="flex justify-center mt-8">
+            <button
+              id="showMoreBtn"
+              class="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              <span class="font-medium">Show More Posts</span>
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+          </div>
+        )
+      }
+    </div>
+
+    <!-- Desktop: Horizontal Scroll -->
+    <div class="hidden md:block relative">
+      <div
+        id="blogContainer"
+        class="flex overflow-x-auto space-x-6 pb-6 pr-16 custom-scrollbar scroll-smooth"
+      >
+        {
+          posts.map((post) => (
+            <BlogCard
+              title={post.frontmatter.title}
+              short={post.frontmatter.short || "No summary available"}
+              preview_image={post.frontmatter.image || "/placeholder.jpg"}
+              url={post.url}
+            />
+          ))
+        }
+      </div>
+
+      <!-- Navigation Arrows -->
+      <button
+        id="scrollLeft"
+        class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-gray-800/80 hover:bg-gray-700/80 backdrop-blur-sm border border-gray-600/50 hover:border-blue-500/50 rounded-full flex items-center justify-center text-gray-300 hover:text-blue-400 transition-all duration-300 shadow-lg z-10"
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+
+      <button
+        id="scrollRight"
+        class="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-gray-800/80 hover:bg-gray-700/80 backdrop-blur-sm border border-gray-600/50 hover:border-blue-500/50 rounded-full flex items-center justify-center text-gray-300 hover:text-blue-400 transition-all duration-300 shadow-lg z-10"
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  )}
+
+  <script>
+    // Mobile show more functionality
+    const showMoreBtn = document.getElementById("showMoreBtn");
+    if (showMoreBtn) {
+      showMoreBtn.addEventListener("click", () => {
+        // You can implement navigation to a full blog listing page here
+        window.location.href = "/blog";
+      });
+    }
+
+    // Desktop scroll functionality
+    const blogContainer = document.getElementById("blogContainer");
+    const scrollLeftBtn = document.getElementById("scrollLeft");
+    const scrollRightBtn = document.getElementById("scrollRight");
+
+    if (blogContainer && scrollLeftBtn && scrollRightBtn) {
+      const cardWidth = 384; // max-w-sm (24rem = 384px) + gap
+
+      scrollLeftBtn.addEventListener("click", () => {
+        blogContainer.scrollBy({ left: -cardWidth, behavior: "smooth" });
+      });
+
+      scrollRightBtn.addEventListener("click", () => {
+        blogContainer.scrollBy({ left: cardWidth, behavior: "smooth" });
+      });
+
+      // Update arrow visibility based on scroll position
+      const updateArrows = () => {
+        const { scrollLeft, scrollWidth, clientWidth } = blogContainer;
+        scrollLeftBtn.style.opacity = scrollLeft > 0 ? "1" : "0.5";
+        scrollRightBtn.style.opacity =
+          scrollLeft < scrollWidth - clientWidth - 10 ? "1" : "0.5";
+      };
+
+      blogContainer.addEventListener("scroll", updateArrows);
+      updateArrows(); // Initial state
+    }
+  </script>
 </Layout>
