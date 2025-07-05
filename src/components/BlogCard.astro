@@ -8,8 +8,13 @@ interface Props {
 
 let { title, short, preview_image, url } = Astro.props;
 
-title = title.length > 50 ? title.slice(0, 50) + "…" : title;
-let description = short.length > 120 ? short.slice(0, 120) + "…" : short;
+// Add safety checks for undefined/null values
+const safeTitle = title || "Untitled";
+const safeShort = short || "No description available";
+
+title = safeTitle.length > 50 ? safeTitle.slice(0, 50) + "…" : safeTitle;
+let description =
+  safeShort.length > 120 ? safeShort.slice(0, 120) + "…" : safeShort;
 ---
 
 <a

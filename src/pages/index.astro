@@ -182,9 +182,9 @@ const posts = Object.values(
             {posts.slice(0, 3).map((post) => (
               <div class="w-full">
                 <BlogCard
-                  title={post.frontmatter.title}
-                  short={post.frontmatter.short || "No summary available"}
-                  preview_image={post.frontmatter.image || "/placeholder.jpg"}
+                  title={post.frontmatter?.title || "Untitled Post"}
+                  short={post.frontmatter?.short || "No summary available"}
+                  preview_image={post.frontmatter?.image || "/placeholder.jpg"}
                   url={post.url}
                 />
               </div>
@@ -219,9 +219,9 @@ const posts = Object.values(
           <div class="grid grid-cols-2 xl:grid-cols-3 gap-6">
             {posts.slice(0, 6).map((post) => (
               <BlogCard
-                title={post.frontmatter.title}
-                short={post.frontmatter.short || "No summary available"}
-                preview_image={post.frontmatter.image || "/placeholder.jpg"}
+                title={post.frontmatter?.title || "Untitled Post"}
+                short={post.frontmatter?.short || "No summary available"}
+                preview_image={post.frontmatter?.image || "/placeholder.jpg"}
                 url={post.url}
               />
             ))}
